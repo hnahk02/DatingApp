@@ -1,13 +1,13 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 
 namespace API.Controllers;
 
-[ApiController]
-[Route("api/{controller}")] //api/user
-public class UserController : ControllerBase
+[Authorize]
+public class UserController : BaseApiController
 {
     private readonly DataContext _context;
     public UserController(DataContext context)
@@ -15,6 +15,7 @@ public class UserController : ControllerBase
         _context = context;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
