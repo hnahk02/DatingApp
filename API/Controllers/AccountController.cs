@@ -22,7 +22,7 @@ namespace API.Controllers
             _datacontext = context;
         }
 
-        [HttpPost("register")] //api/account/register?username=dave&password=pwd
+        [HttpPost("register")] // api/account/register?username=dave&password=pwd
         public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerDTO)
         {
             if (await UserExists(registerDTO.UserName)) return BadRequest("Username is taken");
