@@ -35,8 +35,8 @@
     </div>
     <div class="col-8">
         <tabset class="member-tabset">
+            <tab heading="About {{member.knownAs}}">
             <form #editForm = "ngForm" id="editForm" (ngSubmit)="updateMember()">
-                <tab heading="About {{member.knownAs}}">
                     <h4 class="mt-2">Description</h4>
                     <textarea class="form-control" 
                         [(ngModel)]="member.introduction" 
@@ -62,13 +62,10 @@
                         <label for="country">Country:</label>
                         <input type="text" [(ngModel)]="member.country" name="country" class="form-control mx-2">
                     </div>
-
-                </tab>
             </form>
-          
+        </tab>
             <tab heading="Edit Photos">
-                <h4>Interests</h4>
-                <p>Edit photo go here</p>
+                <app-photo-editor [member]="member"></app-photo-editor>
             </tab>
         </tabset>
     </div>
